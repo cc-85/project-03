@@ -2,7 +2,7 @@
 const express = require('express');
 //IMPORTANT -  used for getting form data from data from the client
 const bodyParser = require('body-parser');
-//const routes = require('./config/routes');
+const routes = require('./config/routes');
 
 const mongoose = require('mongoose');
 mongoose.Promise = require('bluebird'); // add bluebird promises to mongoose
@@ -22,10 +22,10 @@ app.use(bodyParser.json()); //set up to handle JSON
 
 // add routes here
 // don't forget to prefix routes with `/api`
-//app.use('/api', routes);
+app.use('/api', routes);
 
 //remove later
-app.get('/*', (req, res) => res.sendFile(`${__dirname}/public/index.html`));
+//app.get('/*', (req, res) => res.sendFile(`${__dirname}/public/index.html`));
 
 // error handler goes here...
 

@@ -5,8 +5,8 @@ Promise.promisifyAll(mongoose);
 
 const { dbURI } = require('../config/environment');
 
-const Product = require('..models/product');
-const User = require('..models/user');
+const Product = require('../models/product');
+const User = require('../models/user');
 
 mongoose.connectAsync(dbURI)
   .then(db => db.dropDatabase())
