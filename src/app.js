@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import Navbar from './components/Navbar';
+import ProductsIndex from './components/products/ProductsIndex';
 
 import 'bulma';
 
@@ -15,10 +16,9 @@ class App extends React.Component {
 
           <main className="section">
             <div className="container">
-{/*
-              <Switch>
-                <Route path="/products/new" component={ProductsNew} />
-              </Switch> */}
+
+              <ProductsIndex />
+
             </div>
 
           </main>

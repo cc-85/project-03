@@ -28,13 +28,11 @@
     "webpack-dev-server": "^2.11.1"
   },
   "dependencies": {
-<<<<<<< HEAD
-    "bulma": "^0.7.1",
-=======
+    "axios": "^0.18.0",
     "bcrypt": "^3.0.1",
     "bluebird": "^3.5.2",
     "body-parser": "^1.18.3",
->>>>>>> development
+    "bulma": "^0.7.1",
     "express": "^4.16.3",
     "jsonwebtoken": "^8.3.0",
     "mongoose": "^5.3.1",
