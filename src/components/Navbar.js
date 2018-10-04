@@ -1,10 +1,14 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
+import Auth from '../lib/Auth';
 
 
-const Navbar = () => {
-  //add props above later
-//add auth logout function later
+const Navbar = props => {
+  const logout = () => {
+    Auth.logout();
+    props.history.push('/');
+  };
+
   return (
     <nav className="navbar" role="navigation">
       <div className="container">
@@ -22,12 +26,13 @@ const Navbar = () => {
 
 
         <div className="navbar-menu">
-{/* add authenticated conditional statement later*/}
           <div className="navbar-end">
             <Link className="navbar-item" to="/products"> Scroll the items</Link>
-            <Link className="navbar-item" to="/login"> Login </Link>
-            <Link className="navbar-item" to="/register"> Register</Link>
-            <Link className="navbar-item" to="/login"> Logout</Link>
+            {Auth.isAuthenticated() && <Link className="navbar-item" to="/recipes/new">Add an item</Link>}
+            {Auth.isAuthenticated() && <a className="navbar-item" onClick={logout}>Logout</a>}
+            {!Auth.isAuthenticated() && <Link className="navbar-item" to="/login"> Login </Link>}
+            {!Auth.isAuthenticated() && <Link className="navbar-item" to="/register"> Register</Link>}
+
 
           </div>
         </div>
