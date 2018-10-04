@@ -4,6 +4,8 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import ProductsIndex from './components/products/ProductsIndex';
 import ProductsShow from './components/products/ProductsShow';
+import ProductsNew from './components/products/ProductsNew';
+
 
 import 'bulma';
 
@@ -19,16 +21,17 @@ class App extends React.Component {
             <div className="container">
 
 
+              <h1>Selling App</h1>
 
               <Switch>
                 <Route path="/products/:id" component={ProductsShow} />
                 <Route path="/" component={ProductsIndex} />
+                <Route path="/products/new" component={ProductsNew} />
               </Switch>
 
             </div>
 
           </main>
-          <h1>Hello World!</h1>
         </div>
       </BrowserRouter>
     );
