@@ -12,7 +12,7 @@ class ProductsNew extends React.Component {
   }
 
 
-  handlechange(e) {
+  handleChange(e) {
     const product = { ...this.state.product, [e.target.name]: e.target.value };
     const errors = { ...this.state.errors, [e.target.name]: ''};
     this.setState({ product, errors });
@@ -22,7 +22,7 @@ class ProductsNew extends React.Component {
     e.preventDefault();
     const token = Auth.getToken();
     axios
-      .post('api/products', this.state.product, {
+      .post('/api/products', this.state.product, {
         headers: {Authorization: `Bearer ${token}`}
       })
       .then(() => this.props.history.push('/products'))

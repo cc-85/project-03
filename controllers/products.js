@@ -12,6 +12,7 @@ function indexRoute(req, res, next) {
 function showRoute(req, res, next) {
   Product
     .findById(req.params.id)
+    .populate('user')
     .exec()
     .then(product => {
       if(!product) throw new Error('Not Found'); // create a custom error

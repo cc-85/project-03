@@ -2,19 +2,18 @@ import React from 'react';
 import axios from 'axios';
 
 import ProductsForm from './ProductsForm';
-
 import Auth from '../../lib/Auth';
 
 class ProductsEdit extends React.Component {
   constructor() {
     super();
-    this.state = {product: null };
-    this.handleChange.bind(this);
+    this.state = { product: null, errors: {} };
+    this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentDidMount() {
-    axios.get(`api/recipes/${this.props.match.params.id}`)
+    axios.get(`/api/products/${this.props.match.params.id}`)
       .then(res => this.setState({ product: res.data}));
   }
 
@@ -27,11 +26,11 @@ class ProductsEdit extends React.Component {
     e.preventDefault();
     const token = Auth.getToken();
     axios
-      .put(`api/products/${this.props.match.params.id}`, this.state.product, {
+      .put(`/api/products/${this.props.match.params.id}`, this.state.product, {
         headers: { Authorization: `Bearer ${token}`}
       })
-      .then(() =>
-        this.props.history.push(`/products/${this.props.match.params.id}`));
+      .then(() => this.props.history.push(`/products/${this.props.match.params.id}`))
+      .catch(err => this.setState({ errors: err.response.data.errors }));
   }
 
   render() {
@@ -43,6 +42,7 @@ class ProductsEdit extends React.Component {
         handleSubmit={this.handleSubmit}
         handleChange={this.handleChange}
         product={this.state.product}
+        errors={this.state.errors}
       />
     );
   }
