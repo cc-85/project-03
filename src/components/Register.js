@@ -1,13 +1,15 @@
 import React from 'react';
 import axios from 'axios';
 
-import Auth from '..lib/auth';
-//add flash when created
+import Auth from '../lib/Auth';
+import Flash from '../lib/Flash';
 
 class Register extends React.Component {
   constructor() {
     super();
     this.state = { credentials: null };
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(e) {
@@ -24,7 +26,7 @@ class Register extends React.Component {
       .then( res => {
 
         Auth.setToken(res.data.token);
-        //add flash message here
+        Flash.setMessage('success', 'Account created!');
 
       })
       .then(() => this.props.history.push('/'))
