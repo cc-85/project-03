@@ -35,10 +35,10 @@ class ProductsShow extends React.Component {
 
         <div className="columns">
           <div className="column is-half">
-            <p> { this.state.product.price }</p>
-            <p> { this.state.product.size }</p>
-            <p> { this.state.product.colour }</p>
-            <p> { this.state.product.description }</p>
+            <p> <strong>Price: </strong> £ { this.state.product.price }</p>
+            <p> <strong>Size :</strong>  { this.state.product.size }</p>
+            <p> <strong>Color:</strong>  { this.state.product.colour }</p>
+            <p> <strong>Description:</strong>  { this.state.product.description }</p>
 
             {/* add hashtags later */}
           </div>
