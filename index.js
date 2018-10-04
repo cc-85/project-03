@@ -3,7 +3,7 @@ const express = require('express');
 //IMPORTANT -  used for getting form data from data from the client
 const bodyParser = require('body-parser');
 const routes = require('./config/routes');
-
+const errorHandler = require('./lib/errorHandler');
 const mongoose = require('mongoose');
 mongoose.Promise = require('bluebird'); // add bluebird promises to mongoose
 
@@ -28,5 +28,6 @@ app.use('/api', routes);
 //app.get('/*', (req, res) => res.sendFile(`${__dirname}/public/index.html`));
 
 // error handler goes here...
+app.use(errorHandler);
 
 app.listen(port, () => console.log(`Express is listening on port ${port}`));
