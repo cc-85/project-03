@@ -27,7 +27,8 @@ const productSchema = new mongoose.Schema({
     type: String,
     required: [ true, 'This field is required'],
     minlength: [ 20, 'Description must have at least 20 characters' ]
-  }
+  },
+  user: { type: mongoose.Schema.ObjectId, ref: 'User' }
 });
 
 //create the model

@@ -13,6 +13,7 @@ mongoose.connectAsync(dbURI)
   .then(() => User.create({
     username: 'cc-85',
     email: 'caoimhepower@gmail.com',
+    image: 'https://scontent-lhr3-1.cdninstagram.com/vp/b2bc9e58198529c2920da9da395c3740/5C406585/t51.2885-19/s150x150/26397835_2079741798904414_3038168670149804032_n.jpg',
     password: 'pass',
     passwordConfirmation: 'pass'
   }))
