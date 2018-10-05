@@ -7,7 +7,7 @@ import Flash from '../lib/Flash';
 class Register extends React.Component {
   constructor() {
     super();
-    this.state = { credentials: null };
+    this.state = { credentials: null, errors: {} };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
