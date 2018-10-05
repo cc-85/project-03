@@ -14,7 +14,7 @@ router.route('/products/:id')
   .put(secureRoute, productsController.update)
   .delete(secureRoute, productsController.delete);
 
-router.get('/user/:id', secureRoute, userController.show);
+router.get('/users/:id', secureRoute, userController.show);
 
 router.post('/register', authController.register);
 router.post('/login', authController.login);
