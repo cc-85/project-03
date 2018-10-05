@@ -30,6 +30,7 @@ const Navbar = props => {
             <Link className="navbar-item" to="/products"> Scroll the items</Link>
             {Auth.isAuthenticated() && <Link className="navbar-item" to="/products/new">Add an item</Link>}
             {Auth.isAuthenticated() && <a className="navbar-item" onClick={logout}>Logout</a>}
+            {Auth.isAuthenticated() && <Link className="navbar-item" to="/profile">Profile</Link>}
             {!Auth.isAuthenticated() && <Link className="navbar-item" to="/login"> Login </Link>}
             {!Auth.isAuthenticated() && <Link className="navbar-item" to="/register"> Register</Link>}
 

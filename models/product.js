@@ -21,14 +21,15 @@ const productSchema = new mongoose.Schema({
   },
   price: {
     type: Number,
-    required: [ true, 'This field is required']
+    required: [ true, 'Please enter a number']
   },
   description: {
     type: String,
     required: [ true, 'This field is required'],
     minlength: [ 20, 'Description must have at least 20 characters' ]
-  }
+  },
+  user: { type: mongoose.Schema.ObjectId, ref: 'User' }
 });
 
-//create the model
+//export the Product model
 module.exports = mongoose.model('Product', productSchema);

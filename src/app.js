@@ -9,6 +9,7 @@ import ProductsNew from './components/products/ProductsNew';
 import ProductsEdit from './components/products/ProductsEdit';
 import Login from './components/Login';
 import Register from './components/Register';
+import Profile from './components/users/Profile';
 
 import SecureRoute from './components/SecureRoute';
 
@@ -35,6 +36,7 @@ class App extends React.Component {
                 <Route path="/products" component={ProductsIndex} />
                 <Route path="/login" component={Login} />
                 <Route path="/register" component={Register} />
+                <SecureRoute path="/profile" component={Profile} />
                 <Route path="/" component={ProductsIndex} />
                 <Route path="/products/new" component={ProductsNew} />
               </Switch>
