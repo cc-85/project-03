@@ -25,7 +25,7 @@ function createRoute(req, res, next) {
   req.body.user = req.currentUser;
   Product
     .create(req.body)
-    .then(product => res.staus(401).json(product))
+    .then(product => res.status(201).json(product))
     .catch(next);
 }
 
