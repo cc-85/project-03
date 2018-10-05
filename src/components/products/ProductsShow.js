@@ -7,12 +7,27 @@ import { Link } from 'react-router-dom';
 class ProductsShow extends React.Component {
   constructor() {
     super();
-    this.state = { product: null };
+    this.state = { product: null, message: {} };
   }
 
   componentDidMount() {
     axios.get(`/api/products/${this.props.match.params.id}`)
-      .then(res => this.setState({ product: res.data }));
+      .then(res => {
+        const message = { subject: `RE: ${this.state.product.name}`, receiver: res.data.user._id };
+        this.setState({ product: res.data, message  });
+      });
+  }
+
+  handleChange(e) {
+    const message = { ...this.state.message, [e.target.name]: e.target.value };
+    this.setState({ message });
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+
+    axios.post('/messages', this.state.message)
+      .then(() => this.setState({ message: {} }));
   }
 
   render() {
