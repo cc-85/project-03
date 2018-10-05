@@ -11,7 +11,6 @@ class ProductsNew extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-
   handleChange(e) {
     const product = { ...this.state.product, [e.target.name]: e.target.value };
     const errors = { ...this.state.errors, [e.target.name]: ''};
