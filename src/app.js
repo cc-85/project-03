@@ -25,10 +25,6 @@ class App extends React.Component {
           <FlashMessages />
           <main className="section">
             <div className="container">
-
-
-              <h1>Selling App</h1>
-
               <Switch>
                 <SecureRoute path="/products/new" component={ProductsNew} />
                 <SecureRoute path="/products/:id/edit" component={ProductsEdit} />

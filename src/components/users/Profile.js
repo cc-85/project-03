@@ -1,6 +1,10 @@
 import React from 'react';
 import axios from 'axios';
 
+import { Link } from 'react-router-dom';
+
+import ProductCard from '../products/ProductCard';
+
 import Auth from '../../lib/Auth';
 
 class Profile extends React.Component {
@@ -22,11 +26,48 @@ class Profile extends React.Component {
     if(!this.state.user) return null;
     return(
       <section className="section">
+        <h1 className="title is-1">Your Profile</h1>
         <div className="container">
-          <p>Username: { this.state.user.username }</p>
-          <p>Email: { this.state.user.email }</p>
-          {this.state.user.products.map(product => <p key={product._id}>{product.name}</p>)}
-          <img src={ this.state.user.image } />
+          <div className="columns">
+            <div className="column is-one-quarter">
+              <div className="card">
+                <div className="card-image">
+                  <figure className="image">
+                    <img src={ this.state.user.image }/>
+                  </figure>
+                </div>
+                <div className="card-content">
+                  <h5 className="title is-5">{ this.state.user.username }</h5>
+                  <hr />
+                  <p>{ this.state.user.email }</p>
+                </div>
+              </div>
+            </div>
+            <hr />
+            <div className="column is-three-quarters">
+              <h4 className="title is-4">Items you are selling</h4>
+              {/* {this.state.user.products.map(product => <p key={product._id}>{product.name}</p>)} */}
+
+
+              <ul className="columns is-multiline">
+                {this.state.user.products.map(product =>
+                  <li
+                    className="column is-one-quarter-desktop is-one-third-tablet" key={product._id}
+                  >
+                    <Link to={`/products/${product._id}`}>
+                      <ProductCard {...product} />
+                    </Link>
+                  </li>
+                )}
+              </ul>
+
+
+
+
+
+
+            </div>
+          </div>
         </div>
       </section>
 
