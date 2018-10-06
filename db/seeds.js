@@ -25,6 +25,14 @@ mongoose.connectAsync(dbURI)
     price: '10',
     description: 'Gorgeous gold sequin skirt',
     user: user
+  }, {
+    name: 'Mint Green Jumper',
+    size: '10',
+    colour: 'Green',
+    image: 'https://i.pinimg.com/originals/5f/0e/7b/5f0e7b2890d8187693f31ea9faf004aa.jpg',
+    price: '15',
+    description: 'Gorgeous gold sequin skirt',
+    user: user
   }]))
   .then(products => console.log(`${products.length} products created!`))
   .catch(err => console.log(err))
