@@ -2,7 +2,9 @@ import React from 'react';
 import axios from 'axios';
 
 import { Link } from 'react-router-dom';
-//add import auth & comments form later
+import Auth from '../../lib/Auth';
+import MessagesForm from './MessagesForm';
+
 
 class ProductsShow extends React.Component {
   constructor() {
@@ -13,41 +15,60 @@ class ProductsShow extends React.Component {
   componentDidMount() {
     axios.get(`/api/products/${this.props.match.params.id}`)
       .then(res => {
-        const message = { subject: `RE: ${this.state.product.name}`, receiver: res.data.user._id };
-        this.setState({ product: res.data, message  });
+        const message = { subject: `RE: ${res.data.name}`, receiver: res.data.user._id};
+        this.setState({ product: res.data, message });
       });
   }
 
-  handleChange(e) {
-    const message = { ...this.state.message, [e.target.name]: e.target.value };
+  handleMessageChange(e) {
+    const message = { ...this.state.message, [e.target.name]: e.target.value};
     this.setState({ message });
   }
 
-  handleSubmit(e) {
+  handleMessageSubmit(e) {
     e.preventDefault();
-
-    axios.post('/messages', this.state.message)
+    // const token = Auth.getToken();
+    axios
+      .post('/messages', this.state.message)
       .then(() => this.setState({ message: {} }));
+  }
+
+  handleDelete() {
+    const token = Auth.getToken();
+
+    axios
+      .delete(`/api/product/${this.props.match.params.id}`, {
+        headers: { Authorization: `Bearer ${token}`}
+      })
+      .then(() => this.props.history.push('/products'));
   }
 
   render() {
     if(!this.state.product) return null;
     return (
+      // ------------ Name of the item -------------
       <section className="section">
         <div className="container">
           <div className="level">
             <h1 className="title"> { this.state.product.name }</h1>
-            {/* add authenticated function later*/}
+            {Auth.isAuthenticated() && Auth.getPayload().sub === this.state.product.user._id &&
             <div>
+
+              {/* -------------- EDIT button ------------ */}
               <Link className="button"
                 to={`/products/${this.state.product._id}/edit`}> Edit </Link>
-              {/* add delete button later */}
-            </div>
+
+              {/* ---------------- DELETE button --------------- */}
+              <button onClick={this.handleDelete}
+                className="button is-danger"
+              > Delete </button>
+            </div>}
           </div>
         </div>
 
         <hr />
 
+        {/* -------------- price, size, colour, description infos ------------- */}
         <div className="columns">
           <div className="column is-half">
             <p> <strong>Price: </strong> £ { this.state.product.price }</p>
@@ -56,11 +77,24 @@ class ProductsShow extends React.Component {
             <p> <strong>Description:</strong>  { this.state.product.description }</p>
 
             {/* add hashtags later */}
+
+            {/* ----------------------- Messaging form --------------------------- */}
+
+            <hr />
+
+            <h5 className="title is-5"> Send the seller a message </h5>
+            {Auth.isAuthenticated() && Auth.getPayload().sub === this.state.product.user._id &&
+            <MessagesForm
+              handleMessageSubmit={this.handleMessageSubmit}
+              handleMessageChange={this.handleMessageChange}
+              message={this.state.message}
+            />}
+
           </div>
 
+          {/* ------------------- Image of the product ------------------------- */}
           <div className="column is-half">
             <img src={ this.state.product.image} alt={this.state.product.name}/>
-
           </div>
         </div>
 
