@@ -82,16 +82,20 @@ class ProductsShow extends React.Component {
 
             <hr />
 
-            <h5 className="title is-5"> Send the seller a message </h5>
-            {Auth.isAuthenticated() &&
-            <MessagesForm
-              handleMessageSubmit={this.handleMessageSubmit}
-              handleMessageChange={this.handleMessageChange}
-              message={this.state.message}
-            />}
+            {Auth.isAuthenticated() && Auth.getPayload().sub !== this.state.product.user._id &&
+              <div>
+                <h5 className="title is-5"> Send the seller a message </h5>
+                <MessagesForm
+                  handleMessageSubmit={this.handleMessageSubmit}
+                  handleMessageChange={this.handleMessageChange}
+                  message={this.state.message}
+                />
+              </div>}
             {!Auth.isAuthenticated() &&
-            <p>Please <Link to="/login"> log in </Link>to contact the seller.</p>
-            }
+              <div>
+                <h5 className="title is-5"> Send the seller a message </h5>
+                <p>Please <Link to="/login"> log in </Link>to contact the seller.</p>
+              </div>}
 
           </div>
 
