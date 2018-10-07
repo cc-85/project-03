@@ -26,7 +26,6 @@ class App extends React.Component {
           <main className="section">
             <div className="container">
 
-
               <h1>Selling App</h1>
 
               <Switch>

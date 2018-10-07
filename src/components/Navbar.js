@@ -25,7 +25,7 @@ const Navbar = props => {
         </div>
 
 
-        <div className="navbar-menu">
+        <div className="navbar-menu is-active">
           <div className="navbar-end">
             <Link className="navbar-item" to="/products"> Scroll the items</Link>
             {Auth.isAuthenticated() && <Link className="navbar-item" to="/products/new">Add an item</Link>}
