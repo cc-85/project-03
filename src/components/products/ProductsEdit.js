@@ -1,6 +1,5 @@
 import React from 'react';
 import axios from 'axios';
-
 import ProductsForm from './ProductsForm';
 import Auth from '../../lib/Auth';
 

@@ -14,12 +14,18 @@ router.route('/products/:id')
   .put(secureRoute, productsController.update)
   .delete(secureRoute, productsController.delete);
 
-router.get('/users/:id', secureRoute, userController.show);
-
 router.post('/register', authController.register);
 router.post('/login', authController.login);
 
+router.route('/users/:id')
+  .get(secureRoute, userController.show)
+  .put(secureRoute, userController.update);
+
+//router.get('/users/edit', secureRoute, userController.edit);
+
 router.route('/*')
   .all((req, res) => res.sendStatus(404));
+
+
 
 module.exports = router;

@@ -10,7 +10,7 @@ const Navbar = props => {
   };
 
   return (
-    <nav className="navbar" role="navigation">
+    <nav className="navbar is-fixed-top" role="navigation">
       <div className="container">
         <div className="navbar-brand">
           <Link className="navbar-item" to="/">

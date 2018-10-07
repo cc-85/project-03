@@ -19,7 +19,7 @@ class Profile extends React.Component {
     axios.get(`/api/users/${Auth.getPayload().sub}`, {
       headers: {Authorization: `Bearer ${token}`}
     })
-      .then(res => this.setState({ user: res.data }, () => console.log(this.state)));
+      .then(res => this.setState({ user: res.data }, () => console.log(this.state.user.username)));
   }
 
   render() {
@@ -30,7 +30,7 @@ class Profile extends React.Component {
         <div className="container">
           <div className="columns">
             <div className="column is-one-quarter">
-              <div className="card">
+              <div className="card account-details">
                 <div className="card-image">
                   <figure className="image">
                     <img src={ this.state.user.image }/>
@@ -40,6 +40,12 @@ class Profile extends React.Component {
                   <h5 className="title is-5">{ this.state.user.username }</h5>
                   <hr />
                   <p>{ this.state.user.email }</p>
+                  <hr />
+                  {Auth.isAuthenticated() && Auth.getPayload().sub === this.state.user._id &&
+                  <div>
+                    <Link className="button"
+                      to={`/profile/${this.state.user._id}/edit`}>Edit</Link>
+                  </div>}
                 </div>
               </div>
             </div>
