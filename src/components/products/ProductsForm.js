@@ -1,6 +1,19 @@
 import React from 'react';
+import ReactFilestack from 'react-filestack';
 
 const ProductsForm = ({ handleSubmit, handleChange, product, errors }) => {
+
+  const handleUpload = res => {
+    const e = {
+      target: {
+        name: 'image',
+        value: res.filesUploaded[0].url
+      }
+    };
+
+    handleChange(e);
+  };
+
   return (
     <form onSubmit={handleSubmit}>
       {/* ----------- NAME box ---------- */}
@@ -38,6 +51,7 @@ const ProductsForm = ({ handleSubmit, handleChange, product, errors }) => {
         <label className="label"> Colour </label>
         <div className="control">
           <input
+            className="input"
             name="colour"
             placeholder="colour"
             onChange={handleChange}
@@ -50,14 +64,15 @@ const ProductsForm = ({ handleSubmit, handleChange, product, errors }) => {
       <div className="field">
         <label className="label"> Image </label>
         <div className="control">
-          <input
-            className={`input ${errors.image ? 'is-danger' : ''}`}
-            name="image"
-            placeholder="image"
-            onChange={handleChange}
-            value={product.image || ''}
+          {product.image && <img src={product.image} />}
+          <ReactFilestack
+            apikey="AmjwAZ0cRSvmm3mQohi9Oz"
+            mode="pick"
+            onSuccess={handleUpload}
+            onError={(e) => console.log(e)}
+            buttonText="Pick File"
+            buttonClass="button"
           />
-          {errors.image && <small className="help is-danger">{errors.image}</small>}
         </div>
       </div>
 

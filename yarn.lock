@@ -2245,6 +2245,10 @@ filename-regex@^2.0.0:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/filename-regex/-/filename-regex-2.0.1.tgz#c1c4b9bee3e09725ddb106b75c1e301fe2f18b26"
 
+filestack-js@^0.6.0:
+  version "0.6.3"
+  resolved "https://registry.yarnpkg.com/filestack-js/-/filestack-js-0.6.3.tgz#4b68852b5fc3891cd1e6e89dba6b2405ab5f4ea8"
+
 fill-range@^2.1.0:
   version "2.2.4"
   resolved "https://registry.yarnpkg.com/fill-range/-/fill-range-2.2.4.tgz#eb1e773abb056dcd8df2bfdf6af59b8b3a936565"
@@ -4680,6 +4684,12 @@ react-dom@^16.3.2:
     object-assign "^4.1.1"
     prop-types "^15.6.2"
     schedule "^0.5.0"
+
+react-filestack@^0.9.7:
+  version "0.9.7"
+  resolved "https://registry.yarnpkg.com/react-filestack/-/react-filestack-0.9.7.tgz#5acbc47bdaf0ebe3a6f59b546cbec66774184c2b"
+  dependencies:
+    filestack-js "^0.6.0"
 
 react-router-dom@^4.3.1:
   version "4.3.1"

@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
+
 import FlashMessages from './components/FlashMessages';
 import Navbar from './components/Navbar';
 import ProductsIndex from './components/products/ProductsIndex';
@@ -25,8 +26,6 @@ class App extends React.Component {
           <FlashMessages />
           <main className="section">
             <div className="container">
-
-              <h1>Selling App</h1>
 
               <Switch>
                 <SecureRoute path="/products/new" component={ProductsNew} />
