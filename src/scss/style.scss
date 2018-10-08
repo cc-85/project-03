@@ -1,3 +1,10 @@
+@import "auth";
+@import "base";
+@import "navbar";
+@import "products";
+@import "variables";
+
+
 .account-details {
   position: sticky;
   top: 60px;

@@ -8,6 +8,6 @@ function createRoute(req, res, next) {
     .catch(next);
 }
 
-module.export = {
+module.exports = {
   create: createRoute
 };
