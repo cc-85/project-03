@@ -34,11 +34,18 @@ userSchema.plugin(require('mongoose-unique-validator'), {
   message: 'that {PATH} is already in use'
 });
 
-// this virtual will aggregate all the recipes of this user
+// this virtual will aggregate all the products of this user
 userSchema.virtual('products', {
   localField: '_id',
   foreignField: 'user',
   ref: 'Product'
+});
+
+// this virtual will aggregate all the messages of this user
+userSchema.virtual('messages', {
+  localField: '_id',
+  foreignField: 'receiver',
+  ref: 'Message'
 });
 
 userSchema.virtual('passwordConfirmation')

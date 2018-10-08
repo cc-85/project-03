@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import ReactFilestack from 'react-filestack';
 import Flash from '../../lib/Flash';
 import Auth from '../../lib/Auth';
 
@@ -9,6 +10,8 @@ class ProfileEdit extends React.Component {
     this.state = { user: null, errors: {} };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleUpload = this.handleUpload.bind(this);
+
   }
 
   componentDidMount() {
@@ -23,6 +26,17 @@ class ProfileEdit extends React.Component {
     const user = { ...this.state.user, [e.target.name]: e.target.value };
     this.setState({ user });
   }
+
+  handleUpload(res, handleChange) {
+    const e = {
+      target: {
+        name: 'image',
+        value: res.filesUploaded[0].url
+      }
+    };
+    handleChange(e);
+  }
+
 
   handleSubmit(e) {
     e.preventDefault();
@@ -69,7 +83,7 @@ class ProfileEdit extends React.Component {
           </div>
         </div>
 
-        <div className="field">
+        {/* <div className="field">
           <label className="label">Profile image</label>
           <div className="control">
             <input
@@ -79,6 +93,21 @@ class ProfileEdit extends React.Component {
               onChange={this.handleChange}
               value={this.state.user.image || ''} />
             {this.state.errors.image && <small className="help is-danger">{this.state.errors.image}</small>}
+          </div>
+        </div> */}
+
+        <div className="field">
+          <label className="label">Profile image</label>
+          <div className="control">
+            {this.state.user.image && <img src={this.state.user.image} />}
+            <ReactFilestack
+              apikey="AmjwAZ0cRSvmm3mQohi9Oz"
+              mode="pick"
+              onSuccess={(res) => this.handleUpload(res, this.handleChange)}
+              onError={(e) => console.log(e)}
+              buttonText="Pick File"
+              buttonClass="button"
+            />
           </div>
         </div>
 

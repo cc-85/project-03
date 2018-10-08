@@ -2,6 +2,7 @@ const router = require('express').Router();
 const productsController = require('../controllers/products');
 const authController = require('../controllers/auth');
 const userController = require('../controllers/users');
+const messagesController = require('../controllers/messages');
 const secureRoute = require('../lib/secureRoute');
 
 
@@ -20,6 +21,8 @@ router.post('/login', authController.login);
 router.route('/users/:id')
   .get(secureRoute, userController.show)
   .put(secureRoute, userController.update);
+
+router.post('/messages', secureRoute, messagesController.create);
 
 //router.get('/users/edit', secureRoute, userController.edit);
 
