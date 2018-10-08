@@ -12,6 +12,7 @@ import Register from './components/Register';
 import Profile from './components/users/Profile';
 import ProfileEdit from './components/users/ProfileEdit';
 
+
 import SecureRoute from './components/SecureRoute';
 
 import 'bulma';
