@@ -16,7 +16,7 @@ const MessagesForm = ( {handleMessageSubmit, handleMessageChange, message } ) =>
           />
         </div>
       </div>
-      <button className="button is-primary"> Submit </button>
+      <button className="button is-primary">Send</button>
 
     </form>
   );

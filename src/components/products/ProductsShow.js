@@ -56,12 +56,12 @@ class ProductsShow extends React.Component {
 
               {/* -------------- EDIT button ------------ */}
               <Link className="button"
-                to={`/products/${this.state.product._id}/edit`}> Edit </Link>
+                to={`/products/${this.state.product._id}/edit`}>Edit</Link>
 
               {/* ---------------- DELETE button --------------- */}
               <button onClick={this.handleDelete}
                 className="button is-danger"
-              > Delete </button>
+              >Delete</button>
             </div>}
           </div>
         </div>
@@ -71,10 +71,10 @@ class ProductsShow extends React.Component {
         {/* -------------- price, size, colour, description infos ------------- */}
         <div className="columns">
           <div className="column is-half">
-            <p> <strong>Price: </strong> £ { this.state.product.price }</p>
-            <p> <strong>Size :</strong>  { this.state.product.size }</p>
-            <p> <strong>Color:</strong>  { this.state.product.colour }</p>
-            <p> <strong>Description:</strong>  { this.state.product.description }</p>
+            <p> <strong>Price: </strong>£{ this.state.product.price }</p>
+            <p> <strong>Size: </strong>{ this.state.product.size }</p>
+            <p> <strong>Color: </strong>{ this.state.product.colour }</p>
+            <p> <strong>Description: </strong>{ this.state.product.description }</p>
 
             {/* add hashtags later */}
 
@@ -82,13 +82,20 @@ class ProductsShow extends React.Component {
 
             <hr />
 
-            <h5 className="title is-5"> Send the seller a message </h5>
-            {Auth.isAuthenticated() && Auth.getPayload().sub === this.state.product.user._id &&
-            <MessagesForm
-              handleMessageSubmit={this.handleMessageSubmit}
-              handleMessageChange={this.handleMessageChange}
-              message={this.state.message}
-            />}
+            {Auth.isAuthenticated() && Auth.getPayload().sub !== this.state.product.user._id &&
+              <div>
+                <h5 className="title is-5"> Send the seller a message </h5>
+                <MessagesForm
+                  handleMessageSubmit={this.handleMessageSubmit}
+                  handleMessageChange={this.handleMessageChange}
+                  message={this.state.message}
+                />
+              </div>}
+            {!Auth.isAuthenticated() &&
+              <div>
+                <h5 className="title is-5"> Send the seller a message </h5>
+                <p>Please <Link to="/login"> log in </Link>to contact the seller.</p>
+              </div>}
 
           </div>
 

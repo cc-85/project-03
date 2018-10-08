@@ -18,12 +18,12 @@ const ProductsForm = ({ handleSubmit, handleChange, product, errors }) => {
     <form onSubmit={handleSubmit}>
       {/* ----------- NAME box ---------- */}
       <div className="field">
-        <label className="label"> Name </label>
+        <label className="label">Name</label>
         <div className="control">
           <input
             className={`input ${errors.name ? 'is-danger' : ''}`}
             name="name"
-            placeholder="name"
+            placeholder="Name"
             onChange={handleChange}
             value={product.name || ''}
           />
@@ -33,12 +33,12 @@ const ProductsForm = ({ handleSubmit, handleChange, product, errors }) => {
 
       {/* -------------- Size box ---------- */}
       <div className="field">
-        <label className="label"> Size </label>
+        <label className="label">Size</label>
         <div className="control">
           <input
             className={`input ${errors.size} ? 'is-danger : ''`}
             name="size"
-            placeholder="size"
+            placeholder="Size"
             onChange={handleChange}
             value={product.size || ''}
           />
@@ -48,12 +48,12 @@ const ProductsForm = ({ handleSubmit, handleChange, product, errors }) => {
 
       {/* ------------------- Color box --------------- */}
       <div className="field">
-        <label className="label"> Colour </label>
+        <label className="label">Colour</label>
         <div className="control">
           <input
-            className="input"
+            className={`input ${errors.colour} ? 'is-danger : ''`}
             name="colour"
-            placeholder="colour"
+            placeholder="Colour"
             onChange={handleChange}
             value={product.colour || ''}
           />
@@ -62,7 +62,7 @@ const ProductsForm = ({ handleSubmit, handleChange, product, errors }) => {
 
       {/* ---------------- Image upload ------------------- */}
       <div className="field">
-        <label className="label"> Image </label>
+        <label className="label">Image</label>
         <div className="control">
           {product.image && <img src={product.image} />}
           <ReactFilestack
@@ -78,12 +78,12 @@ const ProductsForm = ({ handleSubmit, handleChange, product, errors }) => {
 
       {/* ------------------ Price box ----------------------- */}
       <div className="field">
-        <label className="label"> Price </label>
+        <label className="label">Price</label>
         <div className="control">
           <input
             className={`input ${errors.price ? 'is-danger' : ''}`}
             name="price"
-            placeholder="price"
+            placeholder="Price"
             onChange={handleChange}
             value={product.price || ''}
           />
@@ -93,12 +93,12 @@ const ProductsForm = ({ handleSubmit, handleChange, product, errors }) => {
 
       {/* ------------------ Description box ----------------------- */}
       <div className="field">
-        <label className="label"> Item Description </label>
+        <label className="label">Item Description</label>
         <div className="control">
           <input
             className={`input ${errors.description ? 'is-danger' : ''}`}
             name="description"
-            placeholder="description"
+            placeholder="Description"
             onChange={handleChange}
             value={product.description || ''}
           />
@@ -106,7 +106,7 @@ const ProductsForm = ({ handleSubmit, handleChange, product, errors }) => {
         </div>
       </div>
 
-      <button className="button is-primary"> Submit </button>
+      <button className="button is-primary">Submit</button>
     </form>
   );
 };

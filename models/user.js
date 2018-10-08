@@ -2,10 +2,24 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 
 const userSchema = new mongoose.Schema({
-  username: { type: String, required: [ true, 'Username is required'], unique: true },
-  email: { type: String, required: true, unique: true },
-  image: { type: String, unique: true },
-  password: { type: String, required: true }
+  username: { type: String,
+    required: [ true, 'Username is required'],
+    unique: true
+  },
+  email: {
+    type: String,
+    required: [ true, 'Email is required'],
+    unique: true
+  },
+  image: {
+    type: String,
+    required: [ true, 'Image is required'],
+    match: [ /^https?:\/\/.+/, 'Images must start with \'http\'' ]
+  },
+  password: {
+    type: String,
+    required: [ true, 'Password is required']
+  }
 });
 
 userSchema.set('toJSON', {

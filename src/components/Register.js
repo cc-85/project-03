@@ -58,7 +58,18 @@ class Register extends React.Component {
               placeholder="Email"
               onChange={this.handleChange} />
             {this.state.errors.email && <small className="help is-danger">{this.state.errors.email}</small>}
+          </div>
+        </div>
 
+        <div className="field">
+          <label className="label">Profile picture</label>
+          <div className="control">
+            <input
+              className={`input ${this.state.errors.image ? 'is-danger' : ''}`}
+              name="image"
+              placeholder="Image URL"
+              onChange={this.handleChange} />
+            {this.state.errors.image && <small className="help is-danger">{this.state.errors.image}</small>}
           </div>
         </div>
 
