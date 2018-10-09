@@ -56,7 +56,7 @@ class ProductsShow extends React.Component {
             <div>
 
               {/* -------------- EDIT button ------------ */}
-              <Link className="button"
+              <Link className="button edit"
                 to={`/products/${this.state.product._id}/edit`}>Edit</Link>
 
               {/* ---------------- DELETE button --------------- */}

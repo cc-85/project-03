@@ -6,6 +6,7 @@ import FlashMessages from './components/FlashMessages';
 import Navbar from './components/Navbar';
 import ProductsIndex from './components/products/ProductsIndex';
 import ProductsShow from './components/products/ProductsShow';
+import ProductsHome from './components/products/ProductsHome';
 import ProductsNew from './components/products/ProductsNew';
 import ProductsEdit from './components/products/ProductsEdit';
 import Login from './components/Login';
@@ -40,7 +41,7 @@ class App extends React.Component {
                 <SecureRoute path="/profile/:id/edit" component={ProfileEdit} />
                 <Route path="/products/new" component={ProductsNew} />
                 <SecureRoute path="/profile" component={Profile} />
-                <Route path="/" component={ProductsIndex} />
+                <Route path="/" component={ProductsHome} />
               </Switch>
 
             </div>
