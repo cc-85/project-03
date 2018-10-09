@@ -50,6 +50,7 @@ class ProductsShow extends React.Component {
 
   render() {
     if(!this.state.product) return null;
+    console.log(this.state);
     return (
       // ------------ Name of the item -------------
       <section className="section">
@@ -76,6 +77,7 @@ class ProductsShow extends React.Component {
         {/* -------------- price, size, colour, description infos ------------- */}
         <div className="columns">
           <div className="column is-half">
+            <p><strong> <span> <img src={ this.state.product.user.image }/> </span> { this.state.product.user.username }</strong></p>
             <p> <strong>Price: </strong>£{ this.state.product.price }</p>
             <p> <strong>Size: </strong>{ this.state.product.size }</p>
             <p> <strong>Color: </strong>{ this.state.product.colour }</p>
@@ -98,7 +100,7 @@ class ProductsShow extends React.Component {
               </div>}
             {!Auth.isAuthenticated() &&
               <div>
-                <h5 className="title is-5"> Send the seller a message </h5>
+                <h5 className="title is-5"> Send { this.state.product.user.username } a message </h5>
                 <p>Please <Link to="/login"> log in </Link>to contact the seller.</p>
               </div>}
 
