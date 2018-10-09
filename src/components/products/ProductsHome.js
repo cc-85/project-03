@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import ProductCard from './ProductCard';
 
 
-class ProductsIndex extends React.Component {
+class ProductsHome extends React.Component {
   constructor() {
     super();
     this.state = { products: []};
@@ -21,18 +21,28 @@ class ProductsIndex extends React.Component {
   render() {
     return (
       <main>
-        <section className="hero is-medium is-light is-bold">
-          <div className="hero-body">
-            <div className="container">
-              <h1 className="title">
-                Primary bold title
+        <section className="hero is-small is-light is-bold">
+          <div className="hero-body columns">
+            {/* ------------------  title and subtitle -------------------- */}
+            <div className="column is-half hero-title">
+              <h1 className="title is-2">
+                Treasured
               </h1>
+              <br />
+
               <h2 className="subtitle">
-                Primary bold subtitle
+                Sell your shit
               </h2>
+            </div>
+
+            {/* ------------------ hero image --------------------- */}
+            <div className="column is-half">
+              <img className="hero-img" src="/assets/images/hangers.jpg" alt="shopping" />
             </div>
           </div>
         </section>
+
+        {/* ------------------ Index appears here ----------------------------- */}
         <ul className="columns is-multiline products-index">
           {this.state.products.map(product =>
             <li
@@ -49,4 +59,4 @@ class ProductsIndex extends React.Component {
   }
 }
 
-export default ProductsIndex;
+export default ProductsHome;

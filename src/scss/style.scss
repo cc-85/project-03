@@ -9,3 +9,79 @@
   position: sticky;
   top: 60px;
 }
+body {
+  background: $background;
+  font-family: 'Open Sans', sans-serif;
+}
+
+h1 {
+  font-family: 'Nunito', sans-serif;
+}
+
+.subtitle {
+  font-style: italic;
+}
+.hero-img {
+  // background-image: url(../assets/images/hangers.jpg);
+  width: auto;
+  height: auto;
+
+}
+
+.button.is-primary {
+  background-color: $darkpurple;
+  border: $darkpurple;
+}
+
+.button.is-primary:active  {
+  background-color: $background;
+  border: $darkpurple;
+}
+
+.button.is-primary:hover {
+    background-color: $purple;
+    border: $darkpurple;
+}
+
+.button.is-primary:focused {
+  border: $darkpurple;
+}
+
+.button.edit {
+  color: $darkpurple;
+  border-color: $darkpurple;
+  margin: 0 30 0 30;
+}
+
+.button {
+  margin-right: 25px;
+}
+
+.button.is-danger {
+  background-color: grey;
+}
+div .hero-body {
+  height: auto;
+  width: auto;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.hero.is-small {
+  margin-bottom: 50px;
+  padding: 0;
+}
+
+.hero.is-small .hero-body {
+  padding: 0;
+}
+
+.hero-body {
+  padding: 25px;
+}
+
+.hero-title {
+  text-align: center;
+}

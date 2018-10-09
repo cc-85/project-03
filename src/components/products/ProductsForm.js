@@ -71,7 +71,7 @@ const ProductsForm = ({ handleSubmit, handleChange, product, errors }) => {
             onSuccess={handleUpload}
             onError={(e) => console.log(e)}
             buttonText="Pick File"
-            buttonClass="button"
+            buttonClass="button edit"
           />
         </div>
       </div>
