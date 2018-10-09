@@ -22,7 +22,6 @@ h1 {
   font-style: italic;
 }
 .hero-img {
-  // background-image: url(../assets/images/hangers.jpg);
   width: auto;
   height: auto;
 
@@ -60,6 +59,11 @@ h1 {
 .button.is-danger {
   background-color: grey;
 }
+
+.button.is-danger:hover {
+  background-color: $darkpurple;
+}
+
 div .hero-body {
   height: auto;
   width: auto;

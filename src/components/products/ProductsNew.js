@@ -31,7 +31,7 @@ class ProductsNew extends React.Component {
   render() {
     return (
       <div>
-        <h1> List an item </h1>
+        <h1 className="product-form title is-2"> Add an item </h1>
         <ProductsForm
           handleSubmit={this.handleSubmit}
           handleChange={this.handleChange}
