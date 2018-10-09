@@ -31,7 +31,6 @@ class Register extends React.Component {
   }
 
 
-
   handleSubmit(e) {
     e.preventDefault();
     axios

@@ -29,7 +29,7 @@ class ProductsHome extends React.Component {
               <br />
 
               <h2 className="subtitle">
-                Sell your shit
+                Unclog your wrdrobe and Sell your favorite stuff on our 100% secure platform!
               </h2>
             </div>
 
