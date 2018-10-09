@@ -46,7 +46,7 @@ class Register extends React.Component {
       .catch((err) => this.setState({ errors: err.response.data.errors }));
   }
 
-// -------------------------- RENDER PART --------------------------
+  // -------------------------- RENDER PART --------------------------
   render() {
     return(
       // ------------------------ FORM --------------------------

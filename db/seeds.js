@@ -50,14 +50,6 @@ mongoose.connectAsync(dbURI)
     description: 'Black floral button through maxi skirt with ditsy floral print.',
     user: seededUsers[0]
   }, {
-    name: 'Kill the Kardashians T-shirt',
-    size: 'M',
-    colour: 'Black',
-    image: 'http://juliandickinson.myzen.co.uk/amz/K-KILLKARD-BLK.jpg',
-    price: '8',
-    description: 'Black slogan t-shirt',
-    user: seededUsers[1]
-  }, {
     name: 'Polka dot dungarees',
     size: '12',
     colour: 'Black and white',
