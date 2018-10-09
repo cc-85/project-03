@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import Flash from '../../lib/Flash';
 
 import { Link } from 'react-router-dom';
 import Auth from '../../lib/Auth';
@@ -35,7 +36,8 @@ class ProductsShow extends React.Component {
       .post('/api/messages', this.state.message, {
         headers: {Authorization: `Bearer ${token}`}
       })
-      .then(() => this.setState({ message: {} }));
+      .then(() => this.setState({ message: {} }))
+      .then(() => Flash.setMessage('success', 'Message sent!'));
   }
 
   handleDelete() {
@@ -56,7 +58,7 @@ class ProductsShow extends React.Component {
       <section className="section">
         <div className="container">
           <div className="level">
-            <h1 className="title"> { this.state.product.name }</h1>
+            <h1 className="title is-2"> { this.state.product.name }</h1>
             {Auth.isAuthenticated() && Auth.getPayload().sub === this.state.product.user._id &&
             <div>
 
@@ -76,8 +78,18 @@ class ProductsShow extends React.Component {
 
         {/* -------------- price, size, colour, description infos ------------- */}
         <div className="columns">
-          <div className="column is-half">
-            <p><strong> <span> <img src={ this.state.product.user.image }/> </span> { this.state.product.user.username }</strong></p>
+          <div className="column is-half seller-info">
+            <div className="columns">
+              <div className="column is-2 seller-info">
+                <img src={ this.state.product.user.image }/>
+              </div>
+              <div className="column is-half seller-info">
+                <p>Sold by:</p>
+                <p><strong>{ this.state.product.user.username }</strong></p>
+              </div>
+            </div>
+
+
             <p> <strong>Price: </strong>£{ this.state.product.price }</p>
             <p> <strong>Size: </strong>{ this.state.product.size }</p>
             <p> <strong>Color: </strong>{ this.state.product.colour }</p>

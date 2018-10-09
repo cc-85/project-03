@@ -29,7 +29,7 @@ class Profile extends React.Component {
     if(!this.state.user) return null;
     return(
       <section className="section">
-        <h1 className="title is-1">Your Profile</h1>
+        <h1 className="title is-2">Your Profile</h1>
         <div className="container">
           <div className="columns">
             <div className="column is-one-quarter">
