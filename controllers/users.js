@@ -3,7 +3,14 @@ const User = require('../models/user');
 function userShowRoute(req, res, next) {
   User
     .findById(req.params.id)
-    .populate('user products messages')
+    .populate('user products')
+    .populate({
+      path: 'messages',
+      populate: {
+        path: 'sender',
+        select: 'username image'
+      }
+    })
     .exec()
     .then(user => {
       if(!user) throw new Error('Not Found'); // create a custom error

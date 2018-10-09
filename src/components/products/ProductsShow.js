@@ -10,6 +10,8 @@ class ProductsShow extends React.Component {
   constructor() {
     super();
     this.state = { product: null, message: {} };
+    this.handleMessageChange = this.handleMessageChange.bind(this);
+    this.handleMessageSubmit = this.handleMessageSubmit.bind(this);
   }
 
   componentDidMount() {
@@ -23,13 +25,16 @@ class ProductsShow extends React.Component {
   handleMessageChange(e) {
     const message = { ...this.state.message, [e.target.name]: e.target.value};
     this.setState({ message });
+    console.log(this.state.message);
   }
 
   handleMessageSubmit(e) {
     e.preventDefault();
-    // const token = Auth.getToken();
+    const token = Auth.getToken();
     axios
-      .post('/messages', this.state.message)
+      .post('/api/messages', this.state.message, {
+        headers: {Authorization: `Bearer ${token}`}
+      })
       .then(() => this.setState({ message: {} }));
   }
 

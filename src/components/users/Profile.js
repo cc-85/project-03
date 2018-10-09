@@ -20,7 +20,10 @@ class Profile extends React.Component {
       headers: {Authorization: `Bearer ${token}`}
     })
       .then(res => this.setState({ user: res.data }, () => console.log(this.state)));
+
   }
+
+
 
   render() {
     if(!this.state.user) return null;
@@ -67,15 +70,52 @@ class Profile extends React.Component {
                 )}
               </ul>
 
+              <hr />
 
-
-
-
-
+              <h4 className="title is-4">Your messages</h4>
+              <div>
+                {this.state.user.messages.map(message =>
+                  <div key={message._id} className="box">
+                    <article className="media">
+                      <div className="media-left">
+                        <figure className="image is-64x64">
+                          <img src={message.sender.image} alt="Image" />
+                        </figure>
+                      </div>
+                      <div className="media-content">
+                        <div className="content">
+                          <p><strong>{ message.sender.username } - { message.subject }</strong></p>
+                          <p>{ message.content }</p>
+                        </div>
+                        <nav className="level is-mobile">
+                          <div className="level-left">
+                            <a className="level-item" aria-label="reply">
+                              <span className="icon is-small">
+                                <i className="fas fa-reply" aria-hidden="true"></i>
+                              </span>
+                            </a>
+                            <a className="level-item" aria-label="retweet">
+                              <span className="icon is-small">
+                                <i className="fas fa-retweet" aria-hidden="true"></i>
+                              </span>
+                            </a>
+                            <a className="level-item" aria-label="like">
+                              <span className="icon is-small">
+                                <i className="fas fa-heart" aria-hidden="true"></i>
+                              </span>
+                            </a>
+                          </div>
+                        </nav>
+                      </div>
+                    </article>
+                  </div>
+                )}
+              </div>
             </div>
           </div>
         </div>
       </section>
+
 
     );
   }
