@@ -4,6 +4,9 @@
 @import "products";
 @import "variables";
 
+html {
+  background: $background;
+}
 
 .account-details {
   position: sticky;
@@ -84,4 +87,15 @@ div .hero-body {
 
 .hero-title {
   text-align: center;
+}
+
+.hero.is-light.is-bold {
+  background-image: none;
+  background-color: white;
+  height: 376px;
+}
+
+.product-form {
+  max-width: 800px;
+  margin: auto;
 }

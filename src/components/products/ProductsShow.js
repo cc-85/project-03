@@ -13,6 +13,7 @@ class ProductsShow extends React.Component {
     this.state = { product: null, message: {} };
     this.handleMessageChange = this.handleMessageChange.bind(this);
     this.handleMessageSubmit = this.handleMessageSubmit.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
   }
 
   componentDidMount() {
@@ -36,15 +37,16 @@ class ProductsShow extends React.Component {
       .post('/api/messages', this.state.message, {
         headers: {Authorization: `Bearer ${token}`}
       })
-      .then(() => this.setState({ message: {} }))
-      .then(() => Flash.setMessage('success', 'Message sent!'));
+      .then(() => this.setState({ message: {} }));
+    Flash.setMessage('success', 'Message sent!');
+    this.props.history.replace(this.props.location.pathname);
+    window.scrollTo(0, 0);
   }
 
   handleDelete() {
     const token = Auth.getToken();
-
     axios
-      .delete(`/api/product/${this.props.match.params.id}`, {
+      .delete(`/api/products/${this.props.match.params.id}`, {
         headers: { Authorization: `Bearer ${token}`}
       })
       .then(() => this.props.history.push('/products'));
@@ -67,8 +69,8 @@ class ProductsShow extends React.Component {
                 to={`/products/${this.state.product._id}/edit`}>Edit</Link>
 
               {/* ---------------- DELETE button --------------- */}
-              <button onClick={this.handleDelete}
-                className="button is-danger"
+              <button className="button is-danger"
+                onClick={this.handleDelete}
               >Delete</button>
             </div>}
           </div>
@@ -83,7 +85,7 @@ class ProductsShow extends React.Component {
               <div className="column is-2 seller-info">
                 <img src={ this.state.product.user.image }/>
               </div>
-              <div className="column is-half seller-info">
+              <div className="column seller-info">
                 <p>Sold by:</p>
                 <p><strong>{ this.state.product.user.username }</strong></p>
               </div>

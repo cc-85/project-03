@@ -53,7 +53,7 @@ class Navbar extends React.Component {
           <div className="navbar-brand">
             <Link className="navbar-item logo" to="/">
               <h1 className="treasured-title">Treasured</h1>
-              <img src="../assets/images/treasured-logo.png" alt="Treasured" />
+              <img src="/assets/images/treasured-logo.png" alt="Treasured" />
             </Link>
 
             <a role="button"

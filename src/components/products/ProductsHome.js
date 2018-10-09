@@ -25,9 +25,7 @@ class ProductsHome extends React.Component {
           <div className="hero-body columns">
             {/* ------------------  title and subtitle -------------------- */}
             <div className="column is-half hero-title">
-              <h1 className="title is-2">
-                Treasured
-              </h1>
+              <img src="/assets/images/treasured-logo.png" alt="Treasured"/>
               <br />
 
               <h2 className="subtitle">
