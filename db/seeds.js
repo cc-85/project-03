@@ -74,7 +74,7 @@ mongoose.connectAsync(dbURI)
     description: 'Ted Baker low profile lace-up trainers with a floral design.',
     user: seededUsers[1]
   }, {
-    name: 'Misguided Sassy t-shity',
+    name: 'Misguided Sassy t-shirt',
     size: '8',
     colour: 'White',
     image: 'https://media.missguided.com/s/missguided/TJ41429_set/1/white-sassy-slogan-t-shirt.jpg?$product-page__main--1x$',
