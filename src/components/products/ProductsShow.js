@@ -19,6 +19,7 @@ class ProductsShow extends React.Component {
   componentDidMount() {
     axios.get(`/api/products/${this.props.match.params.id}`)
       .then(res => {
+        // subject is set to RE: the name of the item and receiver id is set
         const message = { subject: `RE: ${res.data.name}`, receiver: res.data.user._id};
         this.setState({ product: res.data, message });
       });
@@ -39,8 +40,8 @@ class ProductsShow extends React.Component {
       })
       .then(() => this.setState({ message: {} }));
     Flash.setMessage('success', 'Message sent!');
-    this.props.history.replace(this.props.location.pathname);
-    window.scrollTo(0, 0);
+    this.props.history.replace(this.props.location.pathname); //allows flash message to fire
+    window.scrollTo(0, 0); //scrolls to top so user sees flash message
   }
 
   handleDelete() {

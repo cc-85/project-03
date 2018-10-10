@@ -9,7 +9,6 @@ function createRoute(req, res, next) {
 }
 
 function deleteMessageRoute(req, res, next) {
-  req.body.sender = req.currentUser;
   Message
     .findById(req.params.id)
     .exec()

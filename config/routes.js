@@ -23,7 +23,7 @@ router.route('/users/:id')
   .put(secureRoute, userController.update);
 
 router.post('/messages', secureRoute, messagesController.create);
-router.delete('/messages/:messageId', secureRoute, messagesController.deleteMessage);
+router.delete('/messages/:id', secureRoute, messagesController.deleteMessage);
 
 //router.get('/users/edit', secureRoute, userController.edit);
 
