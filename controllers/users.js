@@ -1,10 +1,11 @@
 const User = require('../models/user');
 
+// User profile page
 function userShowRoute(req, res, next) {
   User
     .findById(req.params.id)
     .populate('user products')
-    .populate({
+    .populate({                    //messages appear on user's profile
       path: 'messages',
       populate: {
         path: 'sender',
@@ -29,6 +30,7 @@ function updateRoute(req, res, next) {
     .catch(next);
 }
 
+// ---------- export functions ----------
 module.exports = {
   show: userShowRoute,
   update: updateRoute

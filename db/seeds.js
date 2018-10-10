@@ -11,7 +11,7 @@ let seededUsers = [];
 
 mongoose.connectAsync(dbURI)
   .then(db => db.dropDatabase())
-  .then(() => User.create({
+  .then(() => User.create({                  // create user
     username: 'cc-85',
     email: 'caoimhepower@gmail.com',
     image: 'https://scontent-lhr3-1.cdninstagram.com/vp/b2bc9e58198529c2920da9da395c3740/5C406585/t51.2885-19/s150x150/26397835_2079741798904414_3038168670149804032_n.jpg',
@@ -25,14 +25,14 @@ mongoose.connectAsync(dbURI)
     passwordConfirmation: 'pass'
   }))
   .then((users) => seededUsers = users)
-  .then(() => Product.create([{
+  .then(() => Product.create([{                   //create product
     name: 'Gold Mini Skirt',
     size: '6',
     colour: 'Gold',
     image: 'https://img.shein.com/images/shein.com/201610/fa/14757265932724802132_im_900x1199.jpg',
     price: '10',
     description: 'Gorgeous gold sequin skirt',
-    user: seededUsers[1]
+    user: seededUsers[1]                       // assign a product to his owner/user
   }, {
     name: 'Mint Green Jumper',
     size: '10',
