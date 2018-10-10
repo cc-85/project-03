@@ -33,6 +33,8 @@ class Login extends React.Component {
   render() {
     return(
       <div className="product-form">
+        <h1 className="title is-2"> Login </h1>
+
         <form onSubmit={this.handleSubmit}>
           <div className="field">
             <label className="label">Email</label>

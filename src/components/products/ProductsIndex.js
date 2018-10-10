@@ -21,6 +21,7 @@ class ProductsIndex extends React.Component {
   render() {
     return (
       <main>
+        <h1 className="title is-2"> View all items </h1>
         <ul className="columns is-multiline products-index">
           {this.state.products.map(product =>
             <li

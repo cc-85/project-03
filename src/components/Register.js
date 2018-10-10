@@ -48,8 +48,10 @@ class Register extends React.Component {
   // -------------------------- RENDER PART --------------------------
   render() {
     return(
+
       // ------------------------ FORM --------------------------
       <div className="product-form">
+        <h1 className="title is-2"> Join Treasured Community </h1>
         <form onSubmit={this.handleSubmit}>
 
           {/* ---------------- username box -------------- */}
@@ -90,7 +92,7 @@ class Register extends React.Component {
                 onSuccess={(res) => this.handleUpload(res, this.handleChange)}
                 onError={(e) => console.log(e)}
                 buttonText="Pick file"
-                buttonClass="button"
+                buttonClass="button edit"
               />
             </div>
           </div>
@@ -127,8 +129,6 @@ class Register extends React.Component {
       </div>
     );
   }
-
-
 }
 
 export default Register;

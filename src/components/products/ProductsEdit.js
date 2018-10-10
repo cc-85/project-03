@@ -6,14 +6,14 @@ import Auth from '../../lib/Auth';
 class ProductsEdit extends React.Component {
   constructor() {
     super();
-    this.state = { product: null, errors: {} };
+    this.state = { product: null, errors: {} };  
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentDidMount() {
     axios.get(`/api/products/${this.props.match.params.id}`)
-      .then(res => this.setState({ product: res.data}));
+      .then(res => this.setState({ product: res.data}));  //gets the data and updates the product
   }
 
   handleChange(e) {

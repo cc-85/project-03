@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 
+// User model
 const userSchema = new mongoose.Schema({
   username: { type: String,
     required: [ true, 'Username is required'],
@@ -43,7 +44,7 @@ userSchema.virtual('products', {
 
 // this virtual will aggregate all the messages of this user
 userSchema.virtual('messages', {
-  localField: '_id',
+  localField: '_id', // is same as receiver
   foreignField: 'receiver',
   ref: 'Message'
 });
@@ -53,6 +54,7 @@ userSchema.virtual('passwordConfirmation')
     this._passwordConfirmation = passwordConfirmation;
   });
 
+// Checking password and password confirmation match
 userSchema.pre('validate', function checkPasswordsMatch(next) {
   if(this.isModified('password') && this._passwordConfirmation !== this.password) {
     this.invalidate('passwordConfirmation', 'Passwords do not match');
@@ -60,6 +62,7 @@ userSchema.pre('validate', function checkPasswordsMatch(next) {
   next();
 });
 
+//password is hashed
 userSchema.pre('save', function hashPassword(next) {
   if(this.isModified('password')) {
     this.password = bcrypt.hashSync(this.password, bcrypt.genSaltSync(8));
@@ -67,6 +70,7 @@ userSchema.pre('save', function hashPassword(next) {
   next();
 });
 
+// the system compares passwords and authorize login
 userSchema.methods.validatePassword = function validatePassword(password) {
   return bcrypt.compareSync(password, this.password);
 };
