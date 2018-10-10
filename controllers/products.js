@@ -1,5 +1,6 @@
 const Product = require('../models/product');
 
+// Shows all the products
 function indexRoute(req, res, next) {
   Product
     .find()
@@ -9,10 +10,11 @@ function indexRoute(req, res, next) {
     .catch(next);
 }
 
+// shows 1 product
 function showRoute(req, res, next) {
   Product
-    .findById(req.params.id)
-    .populate('user')
+    .findById(req.params.id) // find product
+    .populate('user') // displays name of the user owner
     .exec()
     .then(product => {
       if(!product) throw new Error('Not Found'); // create a custom error
@@ -21,6 +23,7 @@ function showRoute(req, res, next) {
     .catch(next);
 }
 
+// create a new product
 function createRoute(req, res, next) {
   req.body.user = req.currentUser;
   Product
@@ -29,6 +32,7 @@ function createRoute(req, res, next) {
     .catch(next);
 }
 
+// Edit product page
 function updateRoute(req, res, next) {
   Product
     .findById(req.params.id)
@@ -39,6 +43,7 @@ function updateRoute(req, res, next) {
     .catch(next);
 }
 
+// Delete the product
 function deleteRoute(req, res, next) {
   Product
     .findById(req.params.id)
@@ -48,7 +53,7 @@ function deleteRoute(req, res, next) {
     .catch(next);
 }
 
-
+// ---------- export functions ----------
 module.exports = {
   index: indexRoute,
   show: showRoute,

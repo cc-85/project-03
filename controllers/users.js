@@ -1,5 +1,6 @@
 const User = require('../models/user');
 
+// User profile page
 function userShowRoute(req, res, next) {
   User
     .findById(req.params.id)
@@ -29,6 +30,7 @@ function updateRoute(req, res, next) {
     .catch(next);
 }
 
+// ---------- export functions ----------
 module.exports = {
   show: userShowRoute,
   update: updateRoute
