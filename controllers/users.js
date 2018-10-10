@@ -5,11 +5,11 @@ function userShowRoute(req, res, next) {
   User
     .findById(req.params.id)
     .populate('user products')
-    .populate({                    //messages appear on user's profile
-      path: 'messages',
+    .populate({
+      path: 'messages', //populate message info against user/receiver
       populate: {
-        path: 'sender',
-        select: 'username image'
+        path: 'sender', // populate sender info
+        select: 'username image' //specifically username and image
       }
     })
     .exec()

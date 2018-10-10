@@ -28,8 +28,17 @@ class Profile extends React.Component {
     axios
       .delete(`/api/messages/${message._id}`, {
         headers: { Authorization: `Bearer ${token}`}
+      })
+      .then(() => {
+        const messages = this.state.user.messages.slice();
+        const index = messages.indexOf(message);
+        messages.splice(index, 1);
+        // OR... (less elegant!)
+        // const { messages } = this.state.user;
+        // messages.splice(index, 1);
+        const user = { ...this.state.user, messages };
+        this.setState({ user });
       });
-    //.then(() => this.props.history.push('/profile'));
   }
 
 
@@ -93,12 +102,18 @@ class Profile extends React.Component {
                       </div>
                       <div className="media-content">
                         <div className="content">
-                          <p><strong>{ message.sender.username } - { message.subject }</strong></p>
-                          <p>{ message.content }</p>
-                          <button className="button is-danger"
-                            onClick={() => this.handleMessageDelete(message)}>
-                            Delete
-                          </button>
+                          <div className="columns">
+                            <div className="column is-11">
+                              <p><strong>{ message.sender.username } - { message.subject }</strong></p>
+                              <p>{ message.content }</p>
+                            </div>
+                            <div className="column">
+                              <button className="delete is-danger"
+                                onClick={() => this.handleMessageDelete(message)}>
+                              </button>
+                            </div>
+
+                          </div>
 
                         </div>
 

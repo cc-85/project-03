@@ -30,7 +30,7 @@ class Navbar extends React.Component {
     // close navbar if we change "page"
     if(prevProps.location.pathname !== this.props.location.pathname) this.setState({ navbarActive: false });
 
-    // if the user is NOT logged in, but there IS a user being displayed, remmove that user from state
+    // if the user is NOT logged in, but there IS a user being displayed, remove that user from state
     if(!Auth.isAuthenticated() && this.state.user) this.setState({ user: null });
     // if the user IS logged in, but NOT being displayed, get the user and set it to state
     if(Auth.isAuthenticated() && !this.state.user) this.getCurrentUser();

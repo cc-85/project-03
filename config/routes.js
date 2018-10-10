@@ -29,6 +29,7 @@ router.route('/users/:id')
 
 // user sends a message about 1 product
 router.post('/messages', secureRoute, messagesController.create);
+router.delete('/messages/:id', secureRoute, messagesController.deleteMessage);
 
 // user deletes a message
 router.delete('/messages/:messageId', secureRoute, messagesController.deleteMessage);

@@ -44,7 +44,7 @@ userSchema.virtual('products', {
 
 // this virtual will aggregate all the messages of this user
 userSchema.virtual('messages', {
-  localField: '_id', // is same as receiver
+  localField: '_id', //match id of this user to id of receiver (foreignField) to collect messages
   foreignField: 'receiver',
   ref: 'Message'
 });
