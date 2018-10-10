@@ -19,8 +19,17 @@ class Profile extends React.Component {
     axios.get(`/api/users/${Auth.getPayload().sub}`, {
       headers: {Authorization: `Bearer ${token}`}
     })
-      .then(res => this.setState({ user: res.data }, () => console.log(this.state)));
+      .then(res => this.setState({ user: res.data }, () => console.log(this.state.user.messages)));
 
+  }
+
+  handleMessageDelete(message) {
+    const token = Auth.getToken();
+    axios
+      .delete(`/api/messages/${message._id}`, {
+        headers: { Authorization: `Bearer ${token}`}
+      });
+    //.then(() => this.props.history.push('/profile'));
   }
 
 
@@ -78,7 +87,7 @@ class Profile extends React.Component {
                   <div key={message._id} className="box">
                     <article className="media">
                       <div className="media-left">
-                        <figure className="image is-64x64">
+                        <figure className="image is-64x64 sender-image">
                           <img src={message.sender.image} alt="Image" />
                         </figure>
                       </div>
@@ -86,26 +95,13 @@ class Profile extends React.Component {
                         <div className="content">
                           <p><strong>{ message.sender.username } - { message.subject }</strong></p>
                           <p>{ message.content }</p>
+                          <button className="button is-danger"
+                            onClick={() => this.handleMessageDelete(message)}>
+                            Delete
+                          </button>
+
                         </div>
-                        <nav className="level is-mobile">
-                          <div className="level-left">
-                            <a className="level-item" aria-label="reply">
-                              <span className="icon is-small">
-                                <i className="fas fa-reply" aria-hidden="true"></i>
-                              </span>
-                            </a>
-                            <a className="level-item" aria-label="retweet">
-                              <span className="icon is-small">
-                                <i className="fas fa-retweet" aria-hidden="true"></i>
-                              </span>
-                            </a>
-                            <a className="level-item" aria-label="like">
-                              <span className="icon is-small">
-                                <i className="fas fa-heart" aria-hidden="true"></i>
-                              </span>
-                            </a>
-                          </div>
-                        </nav>
+
                       </div>
                     </article>
                   </div>

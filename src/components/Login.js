@@ -32,31 +32,33 @@ class Login extends React.Component {
 
   render() {
     return(
-      <form onSubmit={this.handleSubmit}>
-        <div className="field">
-          <label className="label">Email</label>
-          <div className="control">
-            <input
-              className={`input ${this.state.error ? 'is-danger' : ''}`}
-              name="email"
-              placeholder="Email"
-              onChange={this.handleChange} />
+      <div className="product-form">
+        <form onSubmit={this.handleSubmit}>
+          <div className="field">
+            <label className="label">Email</label>
+            <div className="control">
+              <input
+                className={`input ${this.state.error ? 'is-danger' : ''}`}
+                name="email"
+                placeholder="Email"
+                onChange={this.handleChange} />
+            </div>
           </div>
-        </div>
-        <div className="field">
-          <label className="label">Password</label>
-          <div className="control">
-            <input
-              className={`input ${this.state.error ? 'is-danger' : ''}`}
-              name="password"
-              type="password"
-              placeholder="Password" onChange={this.handleChange} />
+          <div className="field">
+            <label className="label">Password</label>
+            <div className="control">
+              <input
+                className={`input ${this.state.error ? 'is-danger' : ''}`}
+                name="password"
+                type="password"
+                placeholder="Password" onChange={this.handleChange} />
+            </div>
+            {this.state.error && <small className="help is-danger">{this.state.error}</small>}
           </div>
-          {this.state.error && <small className="help is-danger">{this.state.error}</small>}
-        </div>
 
-        <button className="button is-primary">Submit</button>
-      </form>
+          <button className="button is-primary">Submit</button>
+        </form>
+      </div>
     );
   }
 
