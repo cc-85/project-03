@@ -2,3 +2,17 @@
   height: 70px;
   border-radius: 50%;
 }
+
+.masonry {
+  display: flex;
+  flex-flow: column wrap;
+  max-height: 1600px;
+  width: 100%;
+}
+
+.masonry-profile {
+  display: flex;
+  flex-flow: column wrap;
+  max-height: 814px;
+  width: 100%;
+}

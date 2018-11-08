@@ -22,7 +22,7 @@ class ProductsIndex extends React.Component {
     return (
       <main>
         <h1 className="title is-2"> View all items </h1>
-        <ul className="columns is-multiline products-index">
+        <ul className="columns is-multiline products-index masonry">
           {this.state.products.map(product =>
             <li
               className="column is-one-quarter-desktop is-one-third-tablet" key={product._id}

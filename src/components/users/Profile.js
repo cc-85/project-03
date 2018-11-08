@@ -76,7 +76,7 @@ class Profile extends React.Component {
               {/* {this.state.user.products.map(product => <p key={product._id}>{product.name}</p>)} */}
 
 
-              <ul className="columns is-multiline">
+              <ul className="columns is-multiline masonry-profile">
                 {this.state.user.products.map(product =>
                   <li
                     className="column is-one-quarter-desktop is-one-third-tablet" key={product._id}
