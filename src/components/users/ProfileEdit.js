@@ -54,67 +54,70 @@ class ProfileEdit extends React.Component {
     console.log(this.state.user);
     if(!this.state.user) return null;
     return(
-      <form onSubmit={this.handleSubmit}>
-        <div className="field">
-          <label className="label">Username</label>
-          <div className="control">
-            <input
-              className={`input ${this.state.errors.username ? 'is-danger' : ''}`}
-              name="username"
-              placeholder="Username"
-              onChange={this.handleChange}
-              value={this.state.user.username || ''}
-            />
+      <div className="product-form">
+        <h1 className="product-form title is-2">Edit profile</h1>
+        <form onSubmit={this.handleSubmit}>
+          <div className="field">
+            <label className="label">Username</label>
+            <div className="control">
+              <input
+                className={`input ${this.state.errors.username ? 'is-danger' : ''}`}
+                name="username"
+                placeholder="Username"
+                onChange={this.handleChange}
+                value={this.state.user.username || ''}
+              />
 
-            {this.state.errors.username && <small className="help is-danger">{this.state.errors.username}</small>}
+              {this.state.errors.username && <small className="help is-danger">{this.state.errors.username}</small>}
+            </div>
           </div>
-        </div>
 
-        <div className="field">
-          <label className="label">Email</label>
-          <div className="control">
-            <input
-              className={`input ${this.state.errors.email ? 'is-danger' : ''}`}
-              name="email"
-              placeholder="Email"
-              onChange={this.handleChange}
-              value={this.state.user.email || ''} />
-            {this.state.errors.email && <small className="help is-danger">{this.state.errors.email}</small>}
+          <div className="field">
+            <label className="label">Email</label>
+            <div className="control">
+              <input
+                className={`input ${this.state.errors.email ? 'is-danger' : ''}`}
+                name="email"
+                placeholder="Email"
+                onChange={this.handleChange}
+                value={this.state.user.email || ''} />
+              {this.state.errors.email && <small className="help is-danger">{this.state.errors.email}</small>}
+            </div>
           </div>
-        </div>
 
-        {/* <div className="field">
-          <label className="label">Profile image</label>
-          <div className="control">
-            <input
-              className={`input ${this.state.errors.image ? 'is-danger' : ''}`}
-              name="image"
-              placeholder="Image URL"
-              onChange={this.handleChange}
-              value={this.state.user.image || ''} />
-            {this.state.errors.image && <small className="help is-danger">{this.state.errors.image}</small>}
+          {/* <div className="field">
+            <label className="label">Profile image</label>
+            <div className="control">
+              <input
+                className={`input ${this.state.errors.image ? 'is-danger' : ''}`}
+                name="image"
+                placeholder="Image URL"
+                onChange={this.handleChange}
+                value={this.state.user.image || ''} />
+              {this.state.errors.image && <small className="help is-danger">{this.state.errors.image}</small>}
+            </div>
+          </div> */}
+
+          <div className="field">
+            <label className="label">Profile image</label>
+            <div className="control">
+              {this.state.user.image && <img src={this.state.user.image} />}
+              <ReactFilestack
+                apikey="AmjwAZ0cRSvmm3mQohi9Oz"
+                mode="pick"
+                onSuccess={(res) => this.handleUpload(res, this.handleChange)}
+                onError={(e) => console.log(e)}
+                buttonText="Pick File"
+                buttonClass="button"
+              />
+            </div>
           </div>
-        </div> */}
-
-        <div className="field">
-          <label className="label">Profile image</label>
-          <div className="control">
-            {this.state.user.image && <img src={this.state.user.image} />}
-            <ReactFilestack
-              apikey="AmjwAZ0cRSvmm3mQohi9Oz"
-              mode="pick"
-              onSuccess={(res) => this.handleUpload(res, this.handleChange)}
-              onError={(e) => console.log(e)}
-              buttonText="Pick File"
-              buttonClass="button"
-            />
-          </div>
-        </div>
 
 
 
-        <button className="button is-primary">Submit</button>
-      </form>
+          <button className="button is-primary">Submit</button>
+        </form>
+      </div>
 
     );
   }
