@@ -48,85 +48,87 @@ class Register extends React.Component {
   // -------------------------- RENDER PART --------------------------
   render() {
     return(
+      <main className="section">
+        <div className="container">
+          <div className="product-form">
+            <h1 className="title is-2"> Join Treasured Community </h1>
+            <form onSubmit={this.handleSubmit}>
 
-      // ------------------------ FORM --------------------------
-      <div className="product-form">
-        <h1 className="title is-2"> Join Treasured Community </h1>
-        <form onSubmit={this.handleSubmit}>
+              {/* ---------------- username box -------------- */}
+              <div className="field">
+                <label className="label">Username</label>
+                <div className="control">
+                  <input
+                    className={`input ${this.state.errors.username ? 'is-danger' : ''}`}
+                    name="username"
+                    placeholder="Username"
+                    onChange={this.handleChange} />
+                  {this.state.errors.username && <small className="help is-danger">{this.state.errors.username}</small>}
+                </div>
+              </div>
 
-          {/* ---------------- username box -------------- */}
-          <div className="field">
-            <label className="label">Username</label>
-            <div className="control">
-              <input
-                className={`input ${this.state.errors.username ? 'is-danger' : ''}`}
-                name="username"
-                placeholder="Username"
-                onChange={this.handleChange} />
-              {this.state.errors.username && <small className="help is-danger">{this.state.errors.username}</small>}
-            </div>
+              {/* ------------------ email box ------------------ */}
+              <div className="field">
+                <label className="label">Email</label>
+                <div className="control">
+                  <input
+                    className={`input ${this.state.errors.email ? 'is-danger' : ''}`}
+                    name="email"
+                    placeholder="Email"
+                    onChange={this.handleChange} />
+                  {this.state.errors.email && <small className="help is-danger">{this.state.errors.email}</small>}
+                </div>
+              </div>
+
+              {/* ------------------ upload profile picture --------------- */}
+
+              <div className="field">
+                <label className="label">Profile picture</label>
+                <div className="control">
+                  {/* {user.image && <img src={user.image} />} */}
+                  <ReactFilestack
+                    apikey="AmjwAZ0cRSvmm3mQohi9Oz"
+                    mode="pick"
+                    onSuccess={(res) => this.handleUpload(res, this.handleChange)}
+                    onError={(e) => console.log(e)}
+                    buttonText="Pick file"
+                    buttonClass="button edit"
+                  />
+                </div>
+              </div>
+
+              {/* ------------------- password box --------------------- */}
+              <div className="field">
+                <label className="label">Password</label>
+                <div className="control">
+                  <input
+                    className={`input ${this.state.errors.password ? 'is-danger' : ''}`}
+                    name="password"
+                    type="password"
+                    placeholder="Password" onChange={this.handleChange} />
+                </div>
+                {this.state.errors.password && <small className="help is-danger">{this.state.errors.password}</small>}
+              </div>
+
+              {/* -------------------- pwd confirmation box --------------- */}
+              <div className="field">
+                <label className="label">Password Confirmation</label>
+                <div className="control">
+                  <input
+                    className={`input ${this.state.errors.passwordConfirmation ? 'is-danger' : ''}`}
+                    name="passwordConfirmation"
+                    type="password"
+                    placeholder="Password Confirmation" onChange={this.handleChange} />
+                </div>
+                {this.state.errors.passwordConfirmation && <small className="help is-danger">{this.state.errors.passwordConfirmation}</small>}
+              </div>
+
+              {/* ------------------- submit button -------------------- */}
+              <button className="button is-primary">Submit</button>
+            </form>
           </div>
-
-          {/* ------------------ email box ------------------ */}
-          <div className="field">
-            <label className="label">Email</label>
-            <div className="control">
-              <input
-                className={`input ${this.state.errors.email ? 'is-danger' : ''}`}
-                name="email"
-                placeholder="Email"
-                onChange={this.handleChange} />
-              {this.state.errors.email && <small className="help is-danger">{this.state.errors.email}</small>}
-            </div>
-          </div>
-
-          {/* ------------------ upload profile picture --------------- */}
-
-          <div className="field">
-            <label className="label">Profile picture</label>
-            <div className="control">
-              {/* {user.image && <img src={user.image} />} */}
-              <ReactFilestack
-                apikey="AmjwAZ0cRSvmm3mQohi9Oz"
-                mode="pick"
-                onSuccess={(res) => this.handleUpload(res, this.handleChange)}
-                onError={(e) => console.log(e)}
-                buttonText="Pick file"
-                buttonClass="button edit"
-              />
-            </div>
-          </div>
-
-          {/* ------------------- password box --------------------- */}
-          <div className="field">
-            <label className="label">Password</label>
-            <div className="control">
-              <input
-                className={`input ${this.state.errors.password ? 'is-danger' : ''}`}
-                name="password"
-                type="password"
-                placeholder="Password" onChange={this.handleChange} />
-            </div>
-            {this.state.errors.password && <small className="help is-danger">{this.state.errors.password}</small>}
-          </div>
-
-          {/* -------------------- pwd confirmation box --------------- */}
-          <div className="field">
-            <label className="label">Password Confirmation</label>
-            <div className="control">
-              <input
-                className={`input ${this.state.errors.passwordConfirmation ? 'is-danger' : ''}`}
-                name="passwordConfirmation"
-                type="password"
-                placeholder="Password Confirmation" onChange={this.handleChange} />
-            </div>
-            {this.state.errors.passwordConfirmation && <small className="help is-danger">{this.state.errors.passwordConfirmation}</small>}
-          </div>
-
-          {/* ------------------- submit button -------------------- */}
-          <button className="button is-primary">Submit</button>
-        </form>
-      </div>
+        </div>
+      </main>
     );
   }
 }

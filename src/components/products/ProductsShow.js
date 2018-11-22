@@ -58,76 +58,80 @@ class ProductsShow extends React.Component {
     console.log(this.state);
     return (
       // ------------ Name of the item -------------
-      <section className="section">
+      <main className="section">
         <div className="container">
-          <div className="level">
-            <h1 className="title is-2"> { this.state.product.name }</h1>
-            {Auth.isAuthenticated() && Auth.getPayload().sub === this.state.product.user._id &&
-            <div>
+          <section className="section">
+            <div className="container">
+              <div className="level">
+                <h1 className="title is-2"> { this.state.product.name }</h1>
+                {Auth.isAuthenticated() && Auth.getPayload().sub === this.state.product.user._id &&
+                <div>
 
-              {/* -------------- EDIT button ------------ */}
-              <Link className="button edit"
-                to={`/products/${this.state.product._id}/edit`}>Edit</Link>
+                  {/* -------------- EDIT button ------------ */}
+                  <Link className="button edit"
+                    to={`/products/${this.state.product._id}/edit`}>Edit</Link>
 
-              {/* ---------------- DELETE button --------------- */}
-              <button className="button is-danger"
-                onClick={this.handleDelete}
-              >Delete</button>
-            </div>}
-          </div>
-        </div>
-
-        <hr />
-
-        {/* -------------- price, size, colour, description infos ------------- */}
-        <div className="columns">
-          <div className="column is-half seller-info">
-            <div className="columns">
-              <div className="column is-2 seller-info">
-                <img src={ this.state.product.user.image }/>
-              </div>
-              <div className="column seller-info">
-                <p>Sold by:</p>
-                <p><strong>{ this.state.product.user.username }</strong></p>
+                  {/* ---------------- DELETE button --------------- */}
+                  <button className="button is-danger"
+                    onClick={this.handleDelete}
+                  >Delete</button>
+                </div>}
               </div>
             </div>
 
-
-            <p> <strong>Price: </strong>£{ this.state.product.price }</p>
-            <p> <strong>Size: </strong>{ this.state.product.size }</p>
-            <p> <strong>Color: </strong>{ this.state.product.colour }</p>
-            <p> <strong>Description: </strong>{ this.state.product.description }</p>
-
-            {/* add hashtags later */}
-
-            {/* ----------------------- Messaging form --------------------------- */}
-
             <hr />
 
-            {Auth.isAuthenticated() && Auth.getPayload().sub !== this.state.product.user._id &&
-              <div>
-                <h5 className="title is-5"> Send the seller a message </h5>
-                <MessagesForm
-                  handleMessageSubmit={this.handleMessageSubmit}
-                  handleMessageChange={this.handleMessageChange}
-                  message={this.state.message}
-                />
-              </div>}
-            {!Auth.isAuthenticated() &&
-              <div>
-                <h5 className="title is-5"> Send { this.state.product.user.username } a message </h5>
-                <p>Please <Link to="/login"> log in </Link>to contact the seller.</p>
-              </div>}
+            {/* -------------- price, size, colour, description infos ------------- */}
+            <div className="columns">
+              <div className="column is-half seller-info">
+                <div className="columns">
+                  <div className="column is-2 seller-info">
+                    <img src={ this.state.product.user.image }/>
+                  </div>
+                  <div className="column seller-info">
+                    <p>Sold by:</p>
+                    <p><strong>{ this.state.product.user.username }</strong></p>
+                  </div>
+                </div>
 
-          </div>
 
-          {/* ------------------- Image of the product ------------------------- */}
-          <div className="column is-half">
-            <img src={ this.state.product.image} alt={this.state.product.name}/>
-          </div>
+                <p> <strong>Price: </strong>£{ this.state.product.price }</p>
+                <p> <strong>Size: </strong>{ this.state.product.size }</p>
+                <p> <strong>Color: </strong>{ this.state.product.colour }</p>
+                <p> <strong>Description: </strong>{ this.state.product.description }</p>
+
+                {/* add hashtags later */}
+
+                {/* ----------------------- Messaging form --------------------------- */}
+
+                <hr />
+
+                {Auth.isAuthenticated() && Auth.getPayload().sub !== this.state.product.user._id &&
+                  <div>
+                    <h5 className="title is-5"> Send the seller a message </h5>
+                    <MessagesForm
+                      handleMessageSubmit={this.handleMessageSubmit}
+                      handleMessageChange={this.handleMessageChange}
+                      message={this.state.message}
+                    />
+                  </div>}
+                {!Auth.isAuthenticated() &&
+                  <div>
+                    <h5 className="title is-5"> Send { this.state.product.user.username } a message </h5>
+                    <p>Please <Link to="/login"> log in </Link>to contact the seller.</p>
+                  </div>}
+
+              </div>
+
+              {/* ------------------- Image of the product ------------------------- */}
+              <div className="column is-half">
+                <img src={ this.state.product.image} alt={this.state.product.name}/>
+              </div>
+            </div>
+
+          </section>
         </div>
-
-      </section>
+      </main>
     );
   }
 

@@ -7,7 +7,6 @@
   display: flex;
   flex-flow: column wrap;
   max-height: 1600px;
-  width: 100%;
 }
 
 .masonry-profile {
@@ -15,4 +14,8 @@
   flex-flow: column wrap;
   max-height: 814px;
   width: 100%;
+}
+
+.card {
+  box-shadow: 0 2px 3px rgba(10, 10, 255, 0.1), 0 0 0 1px rgba(10, 10, 255, 0.1);
 }

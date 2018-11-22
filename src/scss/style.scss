@@ -17,16 +17,14 @@ body {
   font-family: 'Open Sans', sans-serif;
 }
 
-// h1 {
-//   font-family: 'Nunito', sans-serif;
-// }
-
 .subtitle {
   font-style: italic;
 }
 .hero-img {
-  width: auto;
-  height: auto;
+  height: 425px;
+  background-image: url('/assets/images/hangers.jpg');
+  background-size: cover;
+
 
 }
 

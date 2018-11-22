@@ -28,25 +28,22 @@ class App extends React.Component {
         <div>
           <Navbar />
           <FlashMessages />
-          <main className="section">
-            <div className="container">
 
-              <Switch>
-                <SecureRoute path="/products/new" component={ProductsNew} />
-                <SecureRoute path="/products/:id/edit" component={ProductsEdit} />
-                <Route path="/products/:id" component={ProductsShow} />
-                <Route path="/products" component={ProductsIndex} />
-                <Route path="/login" component={Login} />
-                <Route path="/register" component={Register} />
-                <SecureRoute path="/profile/:id/edit" component={ProfileEdit} />
-                <Route path="/products/new" component={ProductsNew} />
-                <SecureRoute path="/profile" component={Profile} />
-                <Route path="/" component={ProductsHome} />
-              </Switch>
 
-            </div>
 
-          </main>
+          <Switch>
+            <SecureRoute path="/products/new" component={ProductsNew} />
+            <SecureRoute path="/products/:id/edit" component={ProductsEdit} />
+            <Route path="/products/:id" component={ProductsShow} />
+            <Route path="/products" component={ProductsIndex} />
+            <Route path="/login" component={Login} />
+            <Route path="/register" component={Register} />
+            <SecureRoute path="/profile/:id/edit" component={ProfileEdit} />
+            <SecureRoute path="/profile" component={Profile} />
+            <Route path="/" component={ProductsHome} />
+          </Switch>
+
+
         </div>
       </BrowserRouter>
     );

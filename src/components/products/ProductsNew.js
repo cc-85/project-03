@@ -30,15 +30,17 @@ class ProductsNew extends React.Component {
 
   render() {
     return (
-      <div>
-        <h1 className="product-form title is-2"> Add an item </h1>
-        <ProductsForm
-          handleSubmit={this.handleSubmit}
-          handleChange={this.handleChange}
-          product={this.state.product}
-          errors={this.state.errors}
-        />
-      </div>
+      <main className="section">
+        <div className="container">
+          <h1 className="product-form title is-2"> Add an item </h1>
+          <ProductsForm
+            handleSubmit={this.handleSubmit}
+            handleChange={this.handleChange}
+            product={this.state.product}
+            errors={this.state.errors}
+          />
+        </div>
+      </main>
     );
   }
 }

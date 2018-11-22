@@ -46,86 +46,90 @@ class Profile extends React.Component {
   render() {
     if(!this.state.user) return null;
     return(
-      <section className="section">
-        <h1 className="title is-2">Your Profile</h1>
+      <main className="section">
         <div className="container">
-          <div className="columns">
-            <div className="column is-one-quarter">
-              <div className="card account-details">
-                <div className="card-image">
-                  <figure className="image">
-                    <img src={ this.state.user.image }/>
-                  </figure>
+          <section className="section">
+            <h1 className="title is-2">Your Profile</h1>
+            <div className="container">
+              <div className="columns">
+                <div className="column is-one-quarter">
+                  <div className="card account-details">
+                    <div className="card-image">
+                      <figure className="image">
+                        <img src={ this.state.user.image }/>
+                      </figure>
+                    </div>
+                    <div className="card-content">
+                      <h5 className="title is-5">{ this.state.user.username }</h5>
+                      <hr />
+                      <p>{ this.state.user.email }</p>
+                      <hr />
+                      {Auth.isAuthenticated() && Auth.getPayload().sub === this.state.user._id &&
+                      <div>
+                        <Link className="button"
+                          to={`/profile/${this.state.user._id}/edit`}>Edit</Link>
+                      </div>}
+                    </div>
+                  </div>
                 </div>
-                <div className="card-content">
-                  <h5 className="title is-5">{ this.state.user.username }</h5>
+                <hr />
+                <div className="column is-three-quarters">
+                  <h4 className="title is-4">Items you are selling</h4>
+                  {/* {this.state.user.products.map(product => <p key={product._id}>{product.name}</p>)} */}
+
+
+                  <ul className="columns is-multiline masonry-profile">
+                    {this.state.user.products.map(product =>
+                      <li
+                        className="column is-one-quarter-desktop is-one-third-tablet" key={product._id}
+                      >
+                        <Link to={`/products/${product._id}`}>
+                          <ProductCard {...product} />
+                        </Link>
+                      </li>
+                    )}
+                  </ul>
+
                   <hr />
-                  <p>{ this.state.user.email }</p>
-                  <hr />
-                  {Auth.isAuthenticated() && Auth.getPayload().sub === this.state.user._id &&
+
+                  <h4 className="title is-4">Your messages</h4>
                   <div>
-                    <Link className="button"
-                      to={`/profile/${this.state.user._id}/edit`}>Edit</Link>
-                  </div>}
-                </div>
-              </div>
-            </div>
-            <hr />
-            <div className="column is-three-quarters">
-              <h4 className="title is-4">Items you are selling</h4>
-              {/* {this.state.user.products.map(product => <p key={product._id}>{product.name}</p>)} */}
+                    {this.state.user.messages.map(message =>
+                      <div key={message._id} className="box">
+                        <article className="media">
+                          <div className="media-left">
+                            <figure className="image is-64x64 sender-image">
+                              <img src={message.sender.image} alt="Image" />
+                            </figure>
+                          </div>
+                          <div className="media-content">
+                            <div className="content">
+                              <div className="columns">
+                                <div className="column is-11">
+                                  <p><strong>{ message.sender.username } - { message.subject }</strong></p>
+                                  <p>{ message.content }</p>
+                                </div>
+                                <div className="column">
+                                  <button className="delete is-danger"
+                                    onClick={() => this.handleMessageDelete(message)}>
+                                  </button>
+                                </div>
 
+                              </div>
 
-              <ul className="columns is-multiline masonry-profile">
-                {this.state.user.products.map(product =>
-                  <li
-                    className="column is-one-quarter-desktop is-one-third-tablet" key={product._id}
-                  >
-                    <Link to={`/products/${product._id}`}>
-                      <ProductCard {...product} />
-                    </Link>
-                  </li>
-                )}
-              </ul>
-
-              <hr />
-
-              <h4 className="title is-4">Your messages</h4>
-              <div>
-                {this.state.user.messages.map(message =>
-                  <div key={message._id} className="box">
-                    <article className="media">
-                      <div className="media-left">
-                        <figure className="image is-64x64 sender-image">
-                          <img src={message.sender.image} alt="Image" />
-                        </figure>
-                      </div>
-                      <div className="media-content">
-                        <div className="content">
-                          <div className="columns">
-                            <div className="column is-11">
-                              <p><strong>{ message.sender.username } - { message.subject }</strong></p>
-                              <p>{ message.content }</p>
-                            </div>
-                            <div className="column">
-                              <button className="delete is-danger"
-                                onClick={() => this.handleMessageDelete(message)}>
-                              </button>
                             </div>
 
                           </div>
-
-                        </div>
-
+                        </article>
                       </div>
-                    </article>
+                    )}
                   </div>
-                )}
+                </div>
               </div>
             </div>
-          </div>
+          </section>
         </div>
-      </section>
+      </main>
 
 
     );

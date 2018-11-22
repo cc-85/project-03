@@ -32,35 +32,39 @@ class Login extends React.Component {
 
   render() {
     return(
-      <div className="product-form">
-        <h1 className="title is-2"> Login </h1>
+      <main className="section">
+        <div className="container">
+          <div className="product-form">
+            <h1 className="title is-2"> Login </h1>
 
-        <form onSubmit={this.handleSubmit}>
-          <div className="field">
-            <label className="label">Email</label>
-            <div className="control">
-              <input
-                className={`input ${this.state.error ? 'is-danger' : ''}`}
-                name="email"
-                placeholder="Email"
-                onChange={this.handleChange} />
-            </div>
-          </div>
-          <div className="field">
-            <label className="label">Password</label>
-            <div className="control">
-              <input
-                className={`input ${this.state.error ? 'is-danger' : ''}`}
-                name="password"
-                type="password"
-                placeholder="Password" onChange={this.handleChange} />
-            </div>
-            {this.state.error && <small className="help is-danger">{this.state.error}</small>}
-          </div>
+            <form onSubmit={this.handleSubmit}>
+              <div className="field">
+                <label className="label">Email</label>
+                <div className="control">
+                  <input
+                    className={`input ${this.state.error ? 'is-danger' : ''}`}
+                    name="email"
+                    placeholder="Email"
+                    onChange={this.handleChange} />
+                </div>
+              </div>
+              <div className="field">
+                <label className="label">Password</label>
+                <div className="control">
+                  <input
+                    className={`input ${this.state.error ? 'is-danger' : ''}`}
+                    name="password"
+                    type="password"
+                    placeholder="Password" onChange={this.handleChange} />
+                </div>
+                {this.state.error && <small className="help is-danger">{this.state.error}</small>}
+              </div>
 
-          <button className="button is-primary">Submit</button>
-        </form>
-      </div>
+              <button className="button is-primary">Submit</button>
+            </form>
+          </div>
+        </div>
+      </main>
     );
   }
 
